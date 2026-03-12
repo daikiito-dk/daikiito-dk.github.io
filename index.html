@@ -2,42 +2,72 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>$DAKY PROJECT HUB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloomberg Clone Mini App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: #050505; color: #00ff41; font-family: 'Courier New', monospace; padding: 5%; line-height: 1.6; }
-        .container { max-width: 700px; margin: auto; }
-        h1 { border-bottom: 2px solid #00ff41; padding-bottom: 10px; text-shadow: 0 0 10px #00ff41; }
-        .roadmap { margin-top: 40px; border-left: 2px dashed #222; padding-left: 20px; }
-        .step { margin-bottom: 40px; }
-        .label { font-size: 0.8rem; color: #888; }
-        .card { background: #111; border: 1px solid #333; padding: 15px; border-radius: 5px; margin-top: 5px; }
-        .btn { display: inline-block; margin-top: 10px; color: #000; background: #00ff41; padding: 5px 15px; text-decoration: none; font-weight: bold; }
-        .btn:hover { background: #fff; box-shadow: 0 0 15px #fff; }
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+        .ticker-text { font-family: 'Roboto Mono', monospace; }
+        /* 電光掲示板の動くアニメーション */
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-scroll { animation: scroll 15s linear infinite; }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>$DAKY_EVOLUTION_LOG</h1>
-        <p>> 開発プロセスをアーカイブ中...</p>
+<body class="bg-black text-white font-sans overflow-hidden">
 
-        <div class="roadmap">
-            <div class="step">
-                <div class="label">[PHASE 01: GENESIS]</div>
-                <div class="card">
-                    <h3>最初のハローワールド</h3>
-                    <p>ここがすべての原点。もっともしょぼく、もっとも大事な場所。</p>
-                    <a href="./v1.0_genesis/index.html" class="btn">過去ログへ潜る >></a>
-                </div>
-            </div>
-
-            <div class="step">
-                <div class="label">[PHASE 02: NEXT_STEP]</div>
-                <div class="card" style="opacity: 0.3; border-style: dotted;">
-                    <h3>開発予定...</h3>
-                    <p>新しい機能やデザインをここに継ぎ足していきます。</p>
-                </div>
-            </div>
+    <div class="bg-zinc-900 border-b border-zinc-800 py-1 overflow-hidden whitespace-nowrap">
+        <div class="inline-block animate-scroll ticker-text text-sm">
+            <span class="text-blue-500 mx-4">USD/JPY 150.23 <span class="text-green-500">▲0.12%</span></span>
+            <span class="text-blue-500 mx-4">NIKKEI 225 38,500 <span class="text-red-500">▼0.45%</span></span>
+            <span class="text-blue-500 mx-4">BTC/USD 64,200 <span class="text-green-500">▲2.31%</span></span>
         </div>
     </div>
+
+    <header class="p-4 border-b-2 border-blue-600">
+        <h1 class="text-2xl font-black italic tracking-tighter">TERMINAL <span class="text-blue-600 text-sm not-italic">LIVE</span></h1>
+    </header>
+
+    <main class="p-4 space-y-6 overflow-y-auto h-[calc(100vh-120px)]">
+        
+        <div class="border-l-4 border-blue-600 pl-4 py-1">
+            <p class="text-zinc-500 text-xs font-bold uppercase tracking-widest">Market News</p>
+            <h2 class="text-lg font-bold leading-tight mt-1">
+                日本銀行、金利政策を維持。円相場は150円台で安定推移。
+            </h2>
+            <p class="text-zinc-400 text-sm mt-2">2 minutes ago</p>
+        </div>
+
+        <div class="border-l-4 border-zinc-700 pl-4 py-1">
+            <p class="text-zinc-500 text-xs font-bold uppercase tracking-widest">Tech Break</p>
+            <h2 class="text-lg font-bold leading-tight mt-1">
+                新型AIモデル「Gemini 3」発表、テレグラム連携機能を強化。
+            </h2>
+            <p class="text-zinc-400 text-sm mt-2">15 minutes ago</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 mt-4">
+            <div class="bg-zinc-900 p-3 rounded">
+                <p class="text-xs text-zinc-500">S&P 500</p>
+                <p class="text-xl font-bold">5,130.2</p>
+                <p class="text-green-500 text-xs">+0.8%</p>
+            </div>
+            <div class="bg-zinc-900 p-3 rounded">
+                <p class="text-xs text-zinc-500">GOLD</p>
+                <p class="text-xl font-bold">2,160.5</p>
+                <p class="text-red-500 text-xs">-0.2%</p>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="fixed bottom-0 w-full p-4 bg-black border-t border-zinc-800">
+        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition">
+            最新データに更新
+        </button>
+    </div>
+
 </body>
 </html>
